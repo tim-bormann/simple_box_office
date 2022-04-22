@@ -1,0 +1,148 @@
+{
+    "events": [
+        {
+            "name": "example_event1",
+            "showings": [
+                {
+                    "name": "example_showing1",
+                    "datetime": null,
+                    "pricing": null,
+                    "seats": null
+                },
+                {
+                    "name": "example_showing2",
+                    "datetime": null,
+                    "pricing": null,
+                    "seats": null
+                },
+                {
+                    "name": "example_showing3",
+                    "datetime": null,
+                    "pricing": null,
+                    "seats": null
+                }
+            ]
+        },
+        {
+            "name": "example_event2",
+            "showings": [
+                {
+                    "name": "example_showing1",
+                    "datetime": null,
+                    "pricing": null,
+                    "seats": null
+                },
+                {
+                    "name": "example_showing2",
+                    "datetime": null,
+                    "pricing": null,
+                    "seats": null
+                }
+            ]
+        }
+    ],
+    "pricing": {
+        "example_pricing1": {
+            "examplePrice1": 1.0,
+            "examplePrice2": 2.0
+        }
+    },
+    "venues": {
+        "example_venue1": {
+            "example_room1": {
+                "seating": {
+                    "1": {
+                        "ticket": null
+                    },
+                    "2": {
+                        "ticket": null
+                    },
+                    "3": {
+                        "ticket": null
+                    },
+                    "4": {
+                        "ticket": null
+                    },
+                    "5": {
+                        "ticket": null
+                    },
+                    "6": {
+                        "ticket": null
+                    }
+                }
+            }
+        },
+        "example_venue2": {
+            "example_room1": {
+                "seating": {
+                    "Row 1": {
+                        "1": {
+                            "ticket": null
+                        },
+                        "2": {
+                            "ticket": null
+                        },
+                        "3": {
+                            "ticket": null
+                        }
+                    },
+                    "Row 2": {
+                        "1": {
+                            "ticket": null
+                        },
+                        "2": {
+                            "ticket": null
+                        },
+                        "3": {
+                            "ticket": null
+                        }
+                    }
+                }
+            },
+            "example_room2": {
+                "seating": {
+                    "Back Row": {
+                        "1": {
+                            "ticket": null
+                        },
+                        "2": {
+                            "ticket": null
+                        },
+                        "3": {
+                            "ticket": null
+                        },
+                        "4": {
+                            "ticket": null
+                        },
+                        "5": {
+                            "ticket": null
+                        },
+                        "6": {
+                            "ticket": null
+                        },
+                        "7": {
+                            "ticket": null
+                        }
+                    },
+                    "Front Row": {
+                        "Center": {
+                            "ticket": null
+                        },
+                        "Left": {
+                            "ticket": null
+                        },
+                        "Right": {
+                            "ticket": null
+                        }
+                    },
+                    "Special Seat 1": {
+                        "ticket": null
+                    },
+                    "Special Seat 2": {
+                        "ticket": null
+                    }
+                }
+            }
+        }
+    }
+}

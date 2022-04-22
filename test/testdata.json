@@ -1,0 +1,74 @@
+{
+    "events": [
+        {
+            "name": "test_event1",
+            "showings": [
+                {
+                    "name": "test_showing1",
+                    "datetime": "13.04.2022 13:37:00",
+                    "pricing": {
+                        "test_pricing1": {
+                            "test_price1": 1.25,
+                            "test_price2": 2.5
+                        }
+                    },
+                    "venue": "test_venue1",
+                    "room": "test_room1",
+                    "seats": {
+                        "test_seat1": {
+                            "ticket": {
+                                "holder_name": "test_guest1",
+                                "price": "test_price1"
+                            }
+                        },
+                        "test_seat2": {
+                            "ticket": null
+                        },
+                        "test_seating_group1": {
+                            "test_seat3": {
+                                "ticket": {
+                                    "holder_name": "test_guest2",
+                                    "price": "test_price2"
+                                }
+                            },
+                            "test_seat4": {
+                                "ticket": null
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "pricing": {
+        "test_pricing1": {
+            "test_price1": 1.25,
+            "test_price2": 2.5
+        },
+        "test_pricing2": {
+            "test_price": 2.9
+        }
+    },
+    "venues": {
+        "test_venue1": {
+            "test_room1": {
+                "seating": {
+                    "test_seat1": {
+                        "ticket": null
+                    },
+                    "test_seat2": {
+                        "ticket": null
+                    },
+                    "test_seating_group1": {
+                        "test_seat3": {
+                            "ticket": null
+                        },
+                        "test_seat4": {
+                            "ticket": null
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
