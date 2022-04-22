@@ -204,7 +204,7 @@ TEST_CASE("list event") {
     expected_listed_showing.num_tickets_sold = 2;
     expected_listed_showing.num_tickets_available = 2;
     expected_listed_event.push_back(expected_listed_showing);
-    result_t expected_result = SUCCESS;
+    // result_t expected_result = SUCCESS;
 
     // std::cout
     // << "\nexpected_listed_event: size\n"
@@ -221,7 +221,8 @@ TEST_CASE("list event") {
 
 
     std::list<listed_showing_compact_t> test_listed_event;
-    result_t test_result = testmodel.list_event(0,test_listed_event);
+    std::list<listed_showing_compact_t> expected_invalid_listed_event;
+    // result_t test_result = testmodel.list_event(0,test_listed_event);
 
     // std::cout
     // << "\ntest_listed_events: size\n"
@@ -236,8 +237,24 @@ TEST_CASE("list event") {
     // << test_listed_events.front().num_tickets_available
     // << "\n\n";
 
-    CHECK(expected_result == test_result);
-    CHECK(expected_listed_event == test_listed_event);
+    // CHECK(expected_result == test_result);
+    // CHECK(expected_listed_event == test_listed_event);
+
+
+
+    SUBCASE("success") {
+        result_t test_result = testmodel.list_event(0,test_listed_event);
+        result_t expected_result = SUCCESS;
+        CHECK(expected_result == test_result);
+        CHECK(expected_listed_event == test_listed_event);
+    }
+
+    SUBCASE("invalid event") {
+        result_t test_result = testmodel.list_event(1,test_listed_event);
+        result_t expected_result = INVALID_EVENT_REQUESTED;
+        CHECK(expected_result == test_result);
+        CHECK(expected_invalid_listed_event == test_listed_event);
+    }
 }
 
 void print_listed_showing(listed_showing_extended_t lse)
@@ -392,19 +409,41 @@ TEST_CASE("list showing") {
     expected_listed_seats.push_back(expected_listed_seat3);
     expected_listed_seats.push_back(expected_listed_seat4);
     expected_listed_showing.listed_seats = expected_listed_seats;
-    result_t expected_result = SUCCESS;
 
-    listed_showing_extended_t test_listed_showing;
+    listed_showing_extended_t test_listed_showing{};
+    listed_showing_extended_t expected_invalid_listed_showing{};
 
-    result_t test_result = testmodel.list_showing(0,0,test_listed_showing);
+    SUBCASE("success") {
+        result_t test_result = testmodel.list_showing(0,0,test_listed_showing);
+        result_t expected_result = SUCCESS;
+        CHECK(expected_result == test_result);
+        CHECK(expected_listed_showing == test_listed_showing);
+    }
+
+    SUBCASE("invalid event") {
+        result_t test_result = testmodel.list_showing(1,0,test_listed_showing);
+        result_t expected_result = INVALID_EVENT_REQUESTED;
+        CHECK(expected_result == test_result);
+        CHECK(expected_invalid_listed_showing == test_listed_showing);
+    }
+
+    SUBCASE("invalid showing") {
+        result_t test_result = testmodel.list_showing(0,1,test_listed_showing);
+        result_t expected_result = INVALID_SHOWING_REQUESTED;
+        CHECK(expected_result == test_result);
+        CHECK(expected_invalid_listed_showing == test_listed_showing);
+    }
 
     // std::cout << "\n expected_listed_showing: \n";
     // print_listed_showing(expected_listed_showing);
     // std::cout << "\n test_listed_showing: \n";
     // print_listed_showing(test_listed_showing);
 
-    CHECK(expected_result == test_result);
-    CHECK(expected_listed_showing == test_listed_showing);
+        // std::cout << "\n expected_listed_showing: \n";
+        // print_listed_showing(expected_invalid_listed_showing);
+        // std::cout << "\n test_listed_showing: \n";
+        // print_listed_showing(test_listed_showing);
+
 }
 
 void print_json_compare(json expected, json test)
