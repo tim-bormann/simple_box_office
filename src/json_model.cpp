@@ -23,7 +23,6 @@ JsonModel::~JsonModel()
 result_t JsonModel::load
 (void)
 {
-    std::string jsonfile;
     json config;
 
     switch (read_json_file("config.json",config)) {
