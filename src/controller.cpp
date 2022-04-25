@@ -31,7 +31,7 @@ void Controller::run(void)
     << "STARTING USER INTERFACE .."
     << std::endl;
 
-#define USER_INPUT_TEST
+//#define USER_INPUT_TEST
 #ifdef USER_INPUT_TEST
     // process_user_input(
     //     // "create ticket 0 0 testname test_priceX test_seating_group1 test_seat4"
