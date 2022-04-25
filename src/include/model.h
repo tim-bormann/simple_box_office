@@ -20,11 +20,17 @@ typedef struct listed_event {
     size_t num_showings;
 } listed_event_t;
 
-typedef struct {
+typedef struct listed_showing_compact{
     std::string name;
     asap::datetime datetime;
     size_t num_tickets_sold;
     size_t num_tickets_available;
+    listed_showing_compact() {
+        name = "";
+        num_tickets_sold = 0;
+        num_tickets_available = 0;
+        datetime = asap::datetime(0);
+    }
 } listed_showing_compact_t;
 
 typedef struct {
@@ -57,7 +63,7 @@ typedef struct {
     bool ticket_sold;
 } listed_seat_t;
 
-typedef struct {
+typedef struct listed_showing_extended {
     std::string event_name;
     listed_showing_compact_t summary;
     pricing_t pricing;
@@ -65,6 +71,7 @@ typedef struct {
     std::vector<ticket_t> tickets;
     std::vector<listed_seat_t> listed_seats;
 } listed_showing_extended_t;
+
 
 
 enum result_t {
