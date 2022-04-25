@@ -1,5 +1,7 @@
 .vscode
 src/.vscode
-src/build
+src/build/
 test/.vscode
-test/build
+test/build/
+# ignore object files
+*.o
