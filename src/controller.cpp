@@ -33,12 +33,6 @@ void Controller::run(void)
 
 //#define USER_INPUT_TEST
 #ifdef USER_INPUT_TEST
-    // process_user_input(
-    //     // "create ticket 0 0 testname test_priceX test_seating_group1 test_seat4"
-    //     "create ticket 0 0 testname test_price1 test_seating_group1 test_seat4"
-        
-    //     , &exit_flag);
-
     process_user_input("list events", &exit_flag);
     output.print_call_seperator();
     process_user_input("list event 0", &exit_flag);
@@ -73,7 +67,6 @@ void Controller::run(void)
     process_user_input("delete ticket 0 0 test_seating_group1 test_seat3", &exit_flag);
     output.print_call_seperator();
     process_user_input("delete ticket 0 0 test_seating_group1 test_seat2", &exit_flag);
-
 #else
     do {
         output.print_input_prompt();

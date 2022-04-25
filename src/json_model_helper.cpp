@@ -33,49 +33,10 @@ helper_result_t JsonModel::write_json_file
 helper_result_t JsonModel::parse_datetime_string
 (std::string datetime_str, asap::datetime &result)
 {
-    // // Setup the ISO8601 date-time format handlers
-    // // dt_utils::datetime datetime;
-    // dt_utils::datetime_format20 datetime_format(result);
-    // result.clear();
-
-    // bool parse_success = 
-    //     strtk::string_to_type_converter(datetime_str, datetime_format);
-
-    // if (parse_success) {
-    //     // std::cout << "Date-Time: " << datetime_str    << "\n";
-    //     // std::cout << "Year:   "    << result.year   << "\n";
-    //     // std::cout << "Month:  "    << result.month  << "\n";
-    //     // std::cout << "Day:    "    << result.day    << "\n";
-    //     // std::cout << "Hour:   "    << result.hour   << "\n";
-    //     // std::cout << "Minute: "    << result.minute << "\n";
-    //     // std::cout << "Second: "    << result.second << "\n";
-    //     // std::cout << "TZD:    "    << result.tzd    << "\n";
-    // } else {
-    //     std::cout
-    //     << "Error occured during parsing of date-time: "
-    //     << datetime_str
-    //     << "\n";
-    // }
-
     // asap library example documentation:
     //   setting locale helps with local time format
     setlocale(LC_ALL, "");
-
-    // "2022-04-13T13:37+01:00"
-    // "%d/%m/%Y %H:%M:%S"
-
-    // asap::datetime now;
-    // asap::datetime parsed_datetime(datetime_str, "%Y-%m-%dT%H:%M");
-    // asap::datetime parsed_datetime(datetime_str, "%d.%m.%Y %H:%M:%S");
     asap::datetime parsed_datetime(datetime_str);
-    // std::cout
-    // << "\ndatetime_str:\n"
-    // << datetime_str
-    // << "\nparsed_datetime:\n"
-    // << parsed_datetime.str()
-    // << "\nnow:\n"
-    // << now.str()
-    // << "\n\n";
     result = parsed_datetime;
     return JSON_MODEL_SUCCESS;
 }
@@ -227,80 +188,15 @@ std::vector<listed_seat_t> JsonModel::list_seats(json &showing)
     return result;
 }
 
-
-// result_t JsonModel::get_price(size_t event_index, size_t showing_index, std::string price_name, price_t &result)
-// {
-//     if (event_index >= data["events"].size())
-//         return INVALID_EVENT_REQUESTED;
-//     if (showing_index >= data["events"][event_index]["showings"].size())
-//         return INVALID_SHOWING_REQUESTED;
-//     if (!(data["events"][event_index]["showings"][showing_index]["pricing"].front().contains(price_name)))
-//         return INVALID_PRICE_REQUESTED;
-
-//     result.first = price_name;
-//     result.second = data["events"][event_index]["showings"][showing_index]["pricing"].front()[price_name];
-//     return SUCCESS;
-// }
-
-// result_t JsonModel::test_event_index
-// (size_t event_index)
-// {
-//     if (event_index >= data["events"].size())
-//         return INVALID_EVENT_REQUESTED;
-//     else
-//         return SUCCESS;
-// }
-
-// result_t JsonModel::test_showing_index
-// (size_t event_index, size_t showing_index)
-// {
-//     if (showing_index >= data["events"][event_index]["showings"].size())
-//         return INVALID_SHOWING_REQUESTED;
-//     else
-//         return SUCCESS;
-// }
-
-// result_t JsonModel::test_showing_seat
-// (size_t event_index, size_t showing_index, seat_t target_seat)
-// {
-//     json seating_group = data["events"][event_index]["showings"][showing_index]["seats"];
-//     for (auto seating_group_name : target_seat.seating_groups) {
-//         if (seating_group.contains(seating_group_name)) {
-//             seating_group = seating_group[seating_group_name];
-//         }
-//         else {
-//             return INVALID_SEATING_GROUP_REQUESTED;
-//         }
-//     }
-
-//     if (!(seating_group.contains(target_seat.name))) {
-//         return INVALID_SEAT_REQUESTED;
-//     }
-// }
-
 result_t JsonModel::replace_ticket
 (size_t event_index, size_t showing_index, seat_t target_seat, json new_ticket_value)
 {
-    // if ()
-
-    // if (event_index >= data["events"].size()) {
-    //     return INVALID_EVENT_REQUESTED;
-    // }
-
-    // if (showing_index >= data["events"][event_index]["showings"].size()) {
-    //     return INVALID_SHOWING_REQUESTED;
-    // }
-
     std::string ticket_path;
     json seating_group = data["events"][event_index]["showings"][showing_index]["seats"];
     for (auto seating_group_name : target_seat.seating_groups) {
         seating_group = seating_group[seating_group_name];
         ticket_path += ("/"+seating_group_name);
     }
-
-    // if (!(seating_group.contains(target_seat.name))) {
-    //     return INVALID_SEAT_REQUESTED;
-    // }
 
     json seat = seating_group[target_seat.name];
 
@@ -342,9 +238,6 @@ result_t JsonModel::replace_ticket
 
     return SUCCESS;
 }
-
-// result_t JsonModel::replace_ticket
-// (size_t event_index, size_t showing_index, seat_t target_seat, json new_ticket_value)
 
 result_t JsonModel::test_event_index
 (size_t event_index)

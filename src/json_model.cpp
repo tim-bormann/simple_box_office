@@ -23,14 +23,9 @@ JsonModel::~JsonModel()
 result_t JsonModel::load
 (void)
 {
-    // std::cout
-    // << "LOAD JSON MODEL DATA"
-    // << std::endl;
-
     std::string jsonfile;
     json config;
 
-    // helper_result_t load_data_result = read_json_file("config.json",config);
     switch (read_json_file("config.json",config)) {
         case JSON_MODEL_OPEN_FILE_FAILED:
             return LOAD_ERROR_FILE_NOT_FOUND;
@@ -49,7 +44,6 @@ result_t JsonModel::load
         return LOAD_ERROR_INVALID_CONFIG;
     }
     
-    // helper_result_t load_data_result = read_json_file(jsonfile,data);
     switch (read_json_file(jsonfile,data)) {
         case JSON_MODEL_OPEN_FILE_FAILED:
             return LOAD_ERROR_FILE_NOT_FOUND;
@@ -61,24 +55,12 @@ result_t JsonModel::load
             return INTERNAL_ERROR;
     }
 
-    // std::cout
-    // << " json data successfully loaded\n"
-    // << " jsonfile: "
-    // << jsonfile
-    // << std::endl;
-
     return SUCCESS;
 }
 
 result_t JsonModel::write
 (void)
 {
-    // std::cout
-    // << "WRITE JSON MODEL"
-    // << "\n    filename: "
-    // << jsonfile
-    // << std::endl;
-    // helper_result_t write_data_result = write_json_file(jsonfile,data);
     switch (write_json_file(jsonfile,data)) {
         case JSON_MODEL_OPEN_FILE_FAILED:
             return WRITE_ERROR_FILE_NOT_FOUND;
@@ -92,9 +74,6 @@ result_t JsonModel::write
 std::string JsonModel::dump
 (void)
 {
-    // std::cout
-    // << "DUMP JSON MODEL"
-    // << std::endl;
     return data.dump();
 }
 
@@ -158,53 +137,6 @@ result_t JsonModel::create_ticket
     if (test_result != SUCCESS) return test_result;
     test_result = test_seat(event_index,showing_index,seat);
     if (test_result != SUCCESS) return test_result;
-
-    // // #include <iterator>
-    // std::stringstream patch_path_stream;
-    // std::copy(
-    //     ticket.seat.seating_groups.begin(), ticket.seat.seating_groups.end(),
-    //     std::ostream_iterator<std::string>(patch_path_stream, "/")
-    // );
-    // std::string seat_path = "/" + patch_path_stream.str() + ticket.seat.name;
-    // std::string ticket_path = seat_path + "/ticket";
-
-    // std::string new_ticket_patch_path = std::accumulate(
-    //     seating_groups.begin(), seating_groups.end(), "/", [](std::string a, std::string b) {
-    //         return (std::string)(a+"/"+b);
-    //     }
-    // );
-
-    // json test_seat_valid_patch = {{
-    //     {"op", "test"},
-    //     {"path", seat_path},
-    //     {"value", {{"ticket",nullptr}}}
-    // }};
-
-    // json test_seat_taken_patch = {{
-    //     {"op", "test"},
-    //     {"path", ticket_path},
-    //     {"value", nullptr}
-    // }};
-
-    // json test_ticket_created_patch = {{
-    //     {"op", "test"},
-    //     {"path", ticket_path},
-    //     {"value", new_ticket_patch_value}
-    // }};
-
-    // try {
-    //     seats.patch(test_seat_valid_patch);
-    // } catch(const json::exception& exception) {
-    //     std::cerr << exception.id << ":[" << exception.what() << "]\n";
-    //     return INVALID_SEAT_REQUESTED;
-    // }
-
-    // try {
-    //     seats.patch(test_seat_taken_patch);
-    // } catch(const json::exception& exception) {
-    //     std::cerr << exception.id << ":[" << exception.what() << "]\n";
-    //     return TICKET_ALREADY_SOLD;
-    // }
 
     return replace_ticket(event_index,showing_index,seat,{
         {"holder_name", holder_name},

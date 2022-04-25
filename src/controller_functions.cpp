@@ -68,10 +68,6 @@ void Controller::print_model_result_message(result_t result, std::string message
 
 bool Controller::load(void)
 {
-    // std::cout
-    // << "LOADING DATA .."
-    // << std::endl;
-
     result_t model_result = model.load();
 
     if (model_result != SUCCESS) {
@@ -81,44 +77,16 @@ bool Controller::load(void)
         output.print_string("  Data successfully saved!");
         return true;
     }
-
-    // print_model_result_message(
-    //     model.load(),
-    //     "  Data successfully loaded!"
-    // );
 }
 
 void Controller::dump(void)
 {
-    // std::string dumped_model_data;
-
-    // result_t model_result = model.dump(dumped_model_data);
-
-    // if (model_result != SUCCESS) {
-    //     print_model_result(model_result);
-    // } else {
-    //     output.print_string(dumped_model_data);
-    // }
-
-    // print_model_result_message(
-    //     model_result,
-    //     dumped_model_data
-    // );
-    
     output.print_string(model.dump());
 }
 
 
 void Controller::save(void)
 {
-    // result_t model_result = model.write();
-
-    // if (model_result != SUCCESS) {
-    //     print_model_result(model_result);
-    // } else {
-    //     output.print_string("  Data successfully saved!");
-    // }
-
     print_model_result_message(
         model.write(),
         "  Data successfully saved!"

@@ -7,7 +7,6 @@ std::vector<std::string> split_input(std::string input, const char separator)
     std::string token;
     while (std::getline(input_stream, token, separator)) {
         result.emplace(result.begin(),token);
-        // result.push_back(token);
     }
     return result;
 }
@@ -30,12 +29,6 @@ bool parse_index(std::string input, size_t &index)
         return false;
     }
 }
-
-// bool parse_seating_groups(std::string input, std::vector<std::string> seating_groups_str)
-// {
-
-// }
-
 
 void Controller::process_user_input
 (std::string line_input, bool* exit_flag)
@@ -159,12 +152,6 @@ void Controller::process_user_input
             std::string create_target = get_next_input(inputs);
             if (create_target == "ticket") {
                 if (inputs.size() == 6) {
-                    // event_index
-                    // showing_index
-                    // holder_name
-                    // price_name
-                    // seatings_groups
-                    // seat_name
                     size_t param_index = 0;
                     for (auto param: inputs) {
                         std::cout
@@ -231,10 +218,6 @@ void Controller::process_user_input
             std::string create_target = get_next_input(inputs);
             if (create_target == "ticket") {
                 if (inputs.size() == 4) {
-                    // event_index
-                    // showing_index
-                    // seatings_groups
-                    // seat_name
                     size_t param_index = 0;
                     for (auto param: inputs) {
                         std::cout
@@ -304,38 +287,4 @@ void Controller::process_user_input
         << std::endl;
     }
     output.print_dashed_line();
-
-    // if (line_input == "dump") {
-    //     std::cout
-    //     << "DUMP DATABASE"
-    //     << std::endl;
-    //     dump();
-    // }
-    // else
-    // if (line_input == "save") {
-    //     std::cout
-    //     << "SAVE CURRENT DATA"
-    //     << std::endl;
-    //     save();
-    // }
-    // else
-    // if (line_input == "list events") {
-    //     std::cout
-    //     << "LIST EVENTS"
-    //     << std::endl;
-    //     list_events();
-    // }
-    // else
-    // if (line_input == "exit") {
-    //     *exit_flag = true;
-    //     std::cout
-    //     << "\nEXIT FLAG SET!\nEXITING .."
-    //     << std::endl;
-
-    // }
-    // else {
-    //     std::cout
-    //     << "\nINVALID INPUT!"
-    //     << std::endl;
-    // }
 }
