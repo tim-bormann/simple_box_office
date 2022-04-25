@@ -1,5 +1,9 @@
 #include "include/controller.h"
 
+#define reset "\033[0m"
+#define bold "\033[1m"
+#define faint "\033[2m"
+#define underline "\033[4m"
 
 void Controller::print_model_result(result_t result)
 {
@@ -133,7 +137,10 @@ void Controller::list_events()
         size_t index = 0;
         std::stringstream result;
         result
-        << "(Table Legend)\n"
+        << underline << faint
+        << "Table Legend"
+        << reset
+        << "\n"
         << "[index] Event Name: number of Showings\n"
         << "--------------------------------------\n";
         for (auto& event : listed_events) {
@@ -164,7 +171,10 @@ void Controller::list_event(size_t event_index)
         size_t index = 0;
         std::stringstream result;
         result
-        << "(Table Legend)\n"
+        << underline << faint
+        << "Table Legend"
+        << reset
+        << "\n"
         << "[index] Showing Name  #sold #available\n"
         << "--------------------------------------\n";
         for (auto& showing : listed_event) {
